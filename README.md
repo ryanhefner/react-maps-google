@@ -1,5 +1,11 @@
 # 🗺 react-maps-google
 
+[![npm version](https://badge.fury.io/js/react-maps-google.svg)](https://badge.fury.io/js/react-maps-google)
+[![npm](https://img.shields.io/npm/l/express.svg)](LICENSE)
+[![Coverage Status](https://coveralls.io/repos/github/ryanhefner/react-maps-google/badge.svg?branch=master)](https://coveralls.io/github/ryanhefner/react-maps-google?branch=master)
+[![CircleCI](https://circleci.com/gh/ryanhefner/react-maps-google.svg?style=shield)](https://circleci.com/gh/ryanhefner/react-maps-google)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ryanhefner/react-maps-google.svg)](https://greenkeeper.io/)
+
 React components that make it easy to add Google maps and markers to your React projects.
 
 ## Install
