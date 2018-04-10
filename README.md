@@ -1,6 +1,6 @@
 # 🗺 react-maps-google
 
-React component that makes it easy to add Google maps and markers to your React projects.
+React components that make it easy to add Google maps and markers to your React projects.
 
 ## Install
 
