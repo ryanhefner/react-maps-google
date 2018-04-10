@@ -1,0 +1,9 @@
+.DS_Store
+coverage
+es
+node_modules
+umd
+*.sublime-project
+*.sublime-workspace
+/*.js
+!rollup.config.js

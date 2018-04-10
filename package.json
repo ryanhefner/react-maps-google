@@ -1,0 +1,96 @@
+{
+  "name": "react-maps-google",
+  "version": "0.1.0",
+  "description": "React component that allows you to easily created a styled Google Maps instance with custom markers.",
+  "license": "MIT",
+  "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
+  "repository": "ryanhefner/react-maps-google",
+  "bugs": {
+    "url": "https://github.com/ryanhefner/react-maps-google/issues"
+  },
+  "homepage": "https://github.com/ryanhefner/react-maps-google#readme",
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "google",
+    "maps",
+    "api",
+    "map",
+    "markers"
+  ],
+  "files": [
+    "es",
+    "GoogleMap.js",
+    "index.js",
+    "Marker.js",
+    "MarkerClusterer.js",
+    "src",
+    "umd"
+  ],
+  "directories": {
+    "lib": "/src"
+  },
+  "main": "index.js",
+  "module": "es/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "clean": "rm -f index.js && rm -f GoogleMap.js && rm -f Marker.js && rm -f MarkerClusterer.js && rm -fr es && rm -fr umd",
+    "prebuild": "npm run clean",
+    "build": "node ./tools/build.js",
+    "watch": "babel ./src -d . --ignore __tests__ --watch",
+    "prepare": "npm run build",
+    "prepublishOnly": "node ./tools/build.js",
+    "push-release": "git push origin master && git push --tags",
+    "test": "jest --findRelatedTests src/GoogleMap.js src/Marker.js src/MarkerClusterer.js"
+  },
+  "peerDependencies": {
+    "react": ">=15"
+  },
+  "dependencies": {
+    "clean-react-props": "^0.2.1",
+    "prop-types": "^15.6.1",
+    "react-load-script": "0.0.6",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "gzip-size": "^4.1.0",
+    "jest": "^22.4.3",
+    "jest-enzyme": "^6.0.0",
+    "jsdom": "^11.7.0",
+    "pretty-bytes": "^4.0.2",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "regenerator-runtime": "^0.11.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-watch": "^4.3.1",
+    "sinon": "^4.5.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/tools/jest-setup.js"
+    ],
+    "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js"
+  }
+}

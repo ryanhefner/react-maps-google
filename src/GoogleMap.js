@@ -1,0 +1,239 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import Script from 'react-load-script';
+import cleanProps from 'clean-react-props';
+import uuidv1 from 'uuid/v1';
+
+const EXCLUDE_PROPS = [
+  'onClick',
+  'onDoubleClick',
+  'onDrag',
+  'onDragEnd',
+  'onDragStart',
+  'onMouseMove',
+  'onMouseOut',
+  'onMouseOver',
+];
+
+const CALLBACK_MAP = {
+  'bounds_changed': 'onBoundsChange',
+  'center_changed': 'onCenterChange',
+  'click': 'onClick',
+  'dblclick': 'onDoubleClick',
+  'drag': 'onDrag',
+  'dragend': 'onDragEnd',
+  'dragstart': 'onDragStart',
+  'heading_changed': 'onHeadingChange',
+  'idle': 'onIdle',
+  'maptypeid_change': 'onMapTypeIdChange',
+  'mousemove': 'onMouseMove',
+  'mouseout': 'onMouseOut',
+  'mouseover': 'onMouseOver',
+  'projection_changed': 'onProjectionChange',
+  'rightclick': 'onRightClick',
+  'tilesloaded': 'onTilesLoad',
+  'tilt_changed': 'onTiltChange',
+  'zoom_changed': 'onZoomChange',
+};
+
+class GoogleMap extends Component {
+  constructor(props) {
+    super(props);
+
+    const uuid = uuidv1();
+    const scriptInit = `reactMapsGoogleInit`;
+    const scriptLoaded = window.google && window.google.maps && window.google.maps.Map
+      ? true
+      : false;
+
+    this.state = {
+      map: null,
+      scriptInit,
+      scriptLoaded,
+      uuid,
+    };
+
+    window[scriptInit] = this.onScriptInit.bind(this);
+
+    this.onScriptLoad = this.onScriptLoad.bind(this);
+    this.onScriptInit = this.onScriptInit.bind(this);
+  }
+
+  componentDidMount() {
+    this.renderMap();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.refreshMapSettings(nextProps);
+  }
+
+  componentWillUnmount() {
+    const {
+      map,
+    } = this.state;
+
+    if (!map) {
+      return;
+    }
+
+    google.maps.event.clearInstanceListeners(map);
+  }
+
+  refreshMapSettings(props) {
+    const {
+      map,
+    } = this.state;
+
+    if (!map) {
+      return;
+    }
+
+    const {
+      options,
+    } = props;
+
+    map.setOptions(options);
+  }
+
+  onScriptLoad() {
+    this.setState({
+      scriptLoaded: true,
+    });
+  }
+
+  onScriptInit() {
+    this.renderMap();
+  }
+
+  onMapCallback(callback, event) {
+    const {
+      map,
+    } = this.state;
+
+    this.props[callback](map, event);
+  }
+
+  renderMap() {
+    if (this.state.map) {
+      return;
+    }
+
+    if (!window.google || !window.google.maps || !window.google.maps.Map) {
+      return;
+    }
+
+    const {
+      options,
+      onReady,
+    } = this.props;
+
+    const mapElement = ReactDOM.findDOMNode(this.mapRef);
+    const map = new google.maps.Map(mapElement, options);
+
+    Object.keys(CALLBACK_MAP).forEach(key => {
+      google.maps.event.addListener(
+        map,
+        key,
+        this.onMapCallback.bind(this, CALLBACK_MAP[key])
+      );
+    });
+
+    this.setState({
+      map,
+    });
+
+    onReady(map);
+  }
+
+  render() {
+    const {
+      apiKey,
+      children,
+    } = this.props;
+
+    const {
+      map,
+      scriptInit,
+      scriptLoaded,
+    } = this.state;
+
+    const clonedChildren = React.Children.toArray(children).map(child => {
+      return React.cloneElement(child, {
+        map,
+      });
+    });
+
+    return (
+      <React.Fragment>
+        {scriptLoaded === false && (
+          <Script
+            url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${scriptInit}`}
+            onLoad={this.onScriptLoad}
+          />
+        )}
+        <div
+          {...cleanProps(this.props, EXCLUDE_PROPS)}
+          ref={element => this.mapRef = element}
+          style={{height: '100%'}}
+        />
+        {clonedChildren}
+      </React.Fragment>
+    );
+  }
+}
+
+GoogleMap.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  options: PropTypes.object,
+  onBoundsChange: PropTypes.func,
+  onCenterChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onDoubleClick: PropTypes.func,
+  onDrag: PropTypes.func,
+  onDragEnd: PropTypes.func,
+  onDragStart: PropTypes.func,
+  onHeadingChange: PropTypes.func,
+  onIdle: PropTypes.func,
+  onMapTypeIdChange: PropTypes.func,
+  onMouseMove: PropTypes.func,
+  onMouseOut: PropTypes.func,
+  onMouseOver: PropTypes.func,
+  onProjectionChange: PropTypes.func,
+  onRightClick: PropTypes.func,
+  onTilesLoad: PropTypes.func,
+  onTiltChange: PropTypes.func,
+  onZoomChange: PropTypes.func,
+  onReady: PropTypes.func,
+};
+
+GoogleMap.defaultProps = {
+  options: {
+    center: {
+      lat: 40.730610,
+      lng: -73.935242,
+    },
+    zoom: 12,
+  },
+  onBoundsChange: () => {},
+  onCenterChange: () => {},
+  onClick: () => {},
+  onDoubleClick: () => {},
+  onDrag: () => {},
+  onDragEnd: () => {},
+  onDragStart: () => {},
+  onHeadingChange: () => {},
+  onIdle: () => {},
+  onMapTypeIdChange: () => {},
+  onMouseMove: () => {},
+  onMouseOut: () => {},
+  onMouseOver: () => {},
+  onProjectionChange: () => {},
+  onRightClick: () => {},
+  onTilesLoad: () => {},
+  onTiltChange: () => {},
+  onZoomChange: () => {},
+  onReady: () => {},
+};
+
+export default GoogleMap;
