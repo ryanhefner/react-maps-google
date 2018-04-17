@@ -50,8 +50,7 @@
   "dependencies": {
     "clean-react-props": "^0.2.1",
     "prop-types": "^15.6.1",
-    "react-load-script": "0.0.6",
-    "uuid": "^3.2.1"
+    "react-load-script": "0.0.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

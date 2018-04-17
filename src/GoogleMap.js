@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Script from 'react-load-script';
 import cleanProps from 'clean-react-props';
-import uuidv1 from 'uuid/v1';
 
 const EXCLUDE_PROPS = [
   'onClick',
@@ -37,27 +36,28 @@ const CALLBACK_MAP = {
   'zoom_changed': 'onZoomChange',
 };
 
+window['reactMapsGoogleInstances'] = [];
+window['reactMapsGoogleInit'] = () => {
+  window['reactMapsGoogleInstances'].forEach(instance => instance());
+};
+
 class GoogleMap extends Component {
   constructor(props) {
     super(props);
 
-    const uuid = uuidv1();
-    const scriptInit = `reactMapsGoogleInit`;
     const scriptLoaded = window.google && window.google.maps && window.google.maps.Map
       ? true
       : false;
 
     this.state = {
       map: null,
-      scriptInit,
       scriptLoaded,
-      uuid,
     };
-
-    window[scriptInit] = this.onScriptInit.bind(this);
 
     this.onScriptLoad = this.onScriptLoad.bind(this);
     this.onScriptInit = this.onScriptInit.bind(this);
+
+    window['reactMapsGoogleInstances'].push(this.onScriptInit);
   }
 
   componentDidMount() {
@@ -154,7 +154,6 @@ class GoogleMap extends Component {
 
     const {
       map,
-      scriptInit,
       scriptLoaded,
     } = this.state;
 
@@ -168,7 +167,7 @@ class GoogleMap extends Component {
       <React.Fragment>
         {scriptLoaded === false && (
           <Script
-            url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=${scriptInit}`}
+            url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=reactMapsGoogleInit`}
             onLoad={this.onScriptLoad}
           />
         )}
