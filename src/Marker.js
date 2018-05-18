@@ -33,7 +33,23 @@ class Marker extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.renderMarker(nextProps);
+    let renderMarker = false;
+
+    if (nextProps.map !== this.props.map) {
+      renderMarker = true;
+    }
+
+    if (!Object.is(nextProps.position, this.props.position)) {
+      renderMarker = true;
+    }
+
+    if (!Object.is(nextProps.options, this.props.options)) {
+      renderMarker = true;
+    }
+
+    if (renderMarker) {
+      this.renderMarker(nextProps);
+    }
   }
 
   componentWillUnmount() {
@@ -42,6 +58,7 @@ class Marker extends Component {
     }
 
     google.maps.event.clearInstanceListeners(this.marker);
+    this.marker.setMap(null);
   }
 
   onMarkerCallback(callback, event) {
