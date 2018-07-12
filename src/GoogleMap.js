@@ -116,11 +116,11 @@ class GoogleMap extends Component {
 
   renderMap() {
     if (this.state.map) {
-      return;
+      return false;
     }
 
     if (!window.google || !window.google.maps || !window.google.maps.Map) {
-      return;
+      return false;
     }
 
     const {
@@ -129,6 +129,11 @@ class GoogleMap extends Component {
     } = this.props;
 
     const mapElement = ReactDOM.findDOMNode(this.mapRef);
+
+    if (!mapElement) {
+      return false;
+    }
+
     const map = new google.maps.Map(mapElement, options);
 
     Object.keys(CALLBACK_MAP).forEach(key => {
@@ -144,6 +149,7 @@ class GoogleMap extends Component {
     });
 
     onReady(map);
+    return true;
   }
 
   render() {
