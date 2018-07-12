@@ -66,14 +66,14 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "greenkeeper-lockfile": "^1.15.1",
-    "gzip-size": "^4.1.0",
+    "gzip-size": "^5.0.0",
     "jest": "^22.4.3",
     "jest-enzyme": "^6.0.0",
     "jsdom": "^11.7.0",
     "pretty-bytes": "^5.0.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "regenerator-runtime": "^0.11.1",
+    "regenerator-runtime": "^0.12.0",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^9.1.0",
@@ -81,7 +81,7 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^4.0.0",
     "rollup-watch": "^4.3.1",
-    "sinon": "^5.0.7"
+    "sinon": "^6.0.0"
   },
   "jest": {
     "collectCoverage": true,
