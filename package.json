@@ -66,7 +66,6 @@
     "babel-plugin-dev-expression": "^0.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-polyfill": "^6.26.0",
-    "braces": ">=2.3.1",
     "coveralls": "^3.0.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -86,7 +85,6 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.2",
-    "rollup-watch": "^4.3.1",
     "sinon": "^7.3.2"
   },
   "jest": {
