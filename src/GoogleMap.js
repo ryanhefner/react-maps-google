@@ -64,8 +64,8 @@ class GoogleMap extends Component {
     this.renderMap();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.refreshMapSettings(nextProps);
+  componentDidUpdate() {
+    this.refreshMapSettings(this.props);
   }
 
   componentWillUnmount() {

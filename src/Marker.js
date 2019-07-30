@@ -32,23 +32,29 @@ class Marker extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
+    const {
+      map,
+      position,
+      options,
+    } = this.props;
+
     let renderMarker = false;
 
-    if (nextProps.map !== this.props.map) {
+    if (map !== prevProps.map) {
       renderMarker = true;
     }
 
-    if (!Object.is(nextProps.position, this.props.position)) {
+    if (!Object.is(position, prevProps.position)) {
       renderMarker = true;
     }
 
-    if (!Object.is(nextProps.options, this.props.options)) {
+    if (!Object.is(options, prevProps.options)) {
       renderMarker = true;
     }
 
     if (renderMarker) {
-      this.renderMarker(nextProps);
+      this.renderMarker(this.props);
     }
   }
 

@@ -13,8 +13,8 @@ class MarkerClusterer extends Component {
     this.onScriptLoad = this.onScriptLoad.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.renderMarkerClusterer(nextProps);
+  componentDidUpdate() {
+    this.renderMarkerClusterer(this.props);
   }
 
   componentWillUnmount() {
