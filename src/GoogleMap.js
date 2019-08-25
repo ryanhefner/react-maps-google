@@ -36,16 +36,18 @@ const CALLBACK_MAP = {
   'zoom_changed': 'onZoomChange',
 };
 
-window['reactMapsGoogleInstances'] = [];
-window['reactMapsGoogleInit'] = () => {
-  window['reactMapsGoogleInstances'].forEach(instance => instance());
-};
+if (typeof window !== 'undefined') {
+  window['reactMapsGoogleInstances'] = [];
+  window['reactMapsGoogleInit'] = () => {
+    window['reactMapsGoogleInstances'].forEach(instance => instance());
+  };
+}
 
 class GoogleMap extends Component {
   constructor(props) {
     super(props);
 
-    const scriptLoaded = window.google && window.google.maps && window.google.maps.Map
+    const scriptLoaded = typeof window !== 'undefined' && window.google && window.google.maps && window.google.maps.Map
       ? true
       : false;
 
@@ -56,11 +58,13 @@ class GoogleMap extends Component {
 
     this.onScriptLoad = this.onScriptLoad.bind(this);
     this.onScriptInit = this.onScriptInit.bind(this);
-
-    window['reactMapsGoogleInstances'].push(this.onScriptInit);
   }
 
   componentDidMount() {
+    if (typeof window !== 'undefined') {
+      window['reactMapsGoogleInstances'].push(this.onScriptInit);
+    }
+
     this.renderMap();
   }
 
