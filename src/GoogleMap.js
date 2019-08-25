@@ -58,13 +58,13 @@ class GoogleMap extends Component {
 
     this.onScriptLoad = this.onScriptLoad.bind(this);
     this.onScriptInit = this.onScriptInit.bind(this);
-  }
 
-  componentDidMount() {
     if (typeof window !== 'undefined') {
       window['reactMapsGoogleInstances'].push(this.onScriptInit);
     }
+  }
 
+  componentDidMount() {
     this.renderMap();
   }
 
