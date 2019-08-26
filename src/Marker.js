@@ -86,9 +86,9 @@ class Marker extends Component {
 
     if (!this.marker) {
       this.marker = new google.maps.Marker({
+        ...options,
         map,
         position,
-        ...options,
       });
 
       Object.keys(CALLBACK_MAP).forEach(key => {
@@ -102,9 +102,9 @@ class Marker extends Component {
     }
 
     this.marker.setOptions({
+      ...options,
       map,
       position,
-      ...options,
     });
   }
 
