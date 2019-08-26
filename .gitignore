@@ -7,3 +7,4 @@ umd
 *.sublime-workspace
 /*.js
 !rollup.config.js
+.env
