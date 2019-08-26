@@ -22,6 +22,7 @@
   ],
   "files": [
     "es",
+    "Circle.js",
     "GoogleMap.js",
     "index.js",
     "Marker.js",
@@ -36,7 +37,7 @@
   "module": "es/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "clean": "rm -f index.js && rm -f GoogleMap.js && rm -f Marker.js && rm -f MarkerClusterer.js && rm -fr es && rm -fr umd",
+    "clean": "rm -f index.js && rm -f Circle.js && rm -f GoogleMap.js && rm -f Marker.js && rm -f MarkerClusterer.js && rm -fr es && rm -fr umd",
     "prebuild": "npm run clean",
     "build": "node ./tools/build.js",
     "watch": "babel ./src -d . --ignore __tests__,**/*.test.js --watch",
