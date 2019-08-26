@@ -5,10 +5,6 @@ const plugins = [
   '@babel/plugin-proposal-object-rest-spread',
 ];
 
-// if (BABEL_ENV === 'umd') {
-//   plugins.push('external-helpers');
-// }
-
 if (process.env.NODE_ENV === 'production') {
   plugins.push(
     'babel-plugin-dev-expression',
