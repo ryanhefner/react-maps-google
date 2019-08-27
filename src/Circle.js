@@ -74,7 +74,9 @@ class Circle extends Component {
   }
 
   onCircleCallback(callback, event) {
-    this.props[callback](this.circle, event);
+    if (this.props[callback]) {
+      this.props[callback](this.circle, event);
+    }
   }
 
   renderCircle(props) {
@@ -158,8 +160,8 @@ Circle.defaultProps = {
   onMouseUp: (circle) => {},
   onRadiusChanged: (circle) => {},
   onRightClick: (circle) => {},
-  onVisibleChange: (circle) => {},
-  onZIndexChange: (circle) => {},
+  onVisibleChanged: (circle) => {},
+  onZIndexChanged: (circle) => {},
 };
 
 export default Circle;

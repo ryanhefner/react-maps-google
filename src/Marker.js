@@ -68,7 +68,9 @@ class Marker extends Component {
   }
 
   onMarkerCallback(callback, event) {
-    this.props[callback](this.marker, event);
+    if (this.props[callback]) {
+      this.props[callback](this.marker, event);
+    }
   }
 
   renderMarker(props) {
