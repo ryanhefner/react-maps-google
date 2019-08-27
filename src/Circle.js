@@ -74,7 +74,7 @@ class Circle extends Component {
   }
 
   onCircleCallback(callback, event) {
-    this.props[callback](this.marker, event);
+    this.props[callback](this.circle, event);
   }
 
   renderCircle(props) {
