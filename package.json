@@ -86,7 +86,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.2",
-    "sinon": "^7.4.1"
+    "sinon": "^8.0.0"
   },
   "jest": {
     "collectCoverage": true,
