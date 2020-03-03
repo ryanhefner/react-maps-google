@@ -179,6 +179,8 @@ class GoogleMap extends Component {
           <Script
             url={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=reactMapsGoogleInit`}
             onLoad={this.onScriptLoad}
+            async={this.props.async ? `async` : false}
+            defer={this.props.defer ? `defer` : false}
           />
         )}
         <div
@@ -194,6 +196,7 @@ class GoogleMap extends Component {
 
 GoogleMap.propTypes = {
   apiKey: PropTypes.string.isRequired,
+  async: PropTypes.bool,
   options: PropTypes.object,
   onBoundsChange: PropTypes.func,
   onCenterChange: PropTypes.func,
@@ -224,6 +227,7 @@ GoogleMap.defaultProps = {
     },
     zoom: 12,
   },
+  async: true,
   onBoundsChange: () => {},
   onCenterChange: () => {},
   onClick: () => {},
