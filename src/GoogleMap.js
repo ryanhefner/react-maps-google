@@ -5,6 +5,8 @@ import Script from 'react-load-script';
 import cleanProps from 'clean-react-props';
 
 const EXCLUDE_PROPS = [
+  'async',
+  'defer',
   'onClick',
   'onDoubleClick',
   'onDrag',
