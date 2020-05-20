@@ -9,6 +9,10 @@
     "url": "https://github.com/ryanhefner/react-maps-google/issues"
   },
   "homepage": "https://github.com/ryanhefner/react-maps-google#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/ryanhefner"
+  },
   "keywords": [
     "react",
     "react-component",
@@ -80,7 +84,7 @@
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
     "regenerator-runtime": "^0.13.5",
-    "rollup": "^2.10.2",
+    "rollup": "^2.10.5",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
