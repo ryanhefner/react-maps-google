@@ -1,10 +1,10 @@
 # 🗺 react-maps-google
 
-![npm](https://img.shields.io/npm/v/react-maps-google?style=flat-square)
-![NPM](https://img.shields.io/npm/l/react-maps-google?style=flat-square)
-![npm](https://img.shields.io/npm/dt/react-maps-google?style=flat-square)
-![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-maps-google?style=flat-square)
-![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-maps-google?style=flat-square)
+[![npm](https://img.shields.io/npm/v/react-maps-google?style=flat-square)](https://www.pkgstats.com/pkg:react-maps-google)
+[![NPM](https://img.shields.io/npm/l/react-maps-google?style=flat-square)](LICENSE)
+[![npm](https://img.shields.io/npm/dt/react-maps-google?style=flat-square)](https://www.pkgstats.com/pkg:react-maps-google)
+[![Coveralls github](https://img.shields.io/coveralls/github/ryanhefner/react-maps-google?style=flat-square)](https://coveralls.io/github/ryanhefner/react-maps-google)
+[![CircleCI](https://img.shields.io/circleci/build/github/ryanhefner/react-maps-google?style=flat-square)](https://circleci.com/gh/ryanhefner/react-maps-google)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/ryanhefner/react-maps-google?style=flat-square)
 
 
