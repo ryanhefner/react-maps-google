@@ -1,6 +1,6 @@
 {
   "name": "react-maps-google",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "React component that allows you to easily created a styled Google Maps instance with custom markers.",
   "license": "MIT",
   "author": "Ryan Hefner <hi@ryanhefner.com> (https://www.ryanhefner.com)",
