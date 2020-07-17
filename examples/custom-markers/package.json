@@ -6,7 +6,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
+<<<<<<< HEAD
     "snyk": "^1.362.0"
+=======
+    "snyk": "^1.362.1"
+>>>>>>> master
   },
   "scripts": {
     "start": "react-scripts start",
