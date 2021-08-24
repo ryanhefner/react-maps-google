@@ -36,7 +36,7 @@ make it easy to compose markers into your map instances.
 
 * `apiKey:String` **Required** - Google Maps Javascript API key. [Guide to get an API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 * `async:Bool` - True loads Google Maps script asynchronously. Defaults to true.
-* `options:Object` - Options for customizing/styling the map. [MapOptions Interface](https://google-developers.appspot.com/maps/documentation/javascript/reference/3.exp/map#MapOptions)
+* `options:Object` - Options for customizing/styling the map. [MapOptions Interface](https://developers.google.com/maps/documentation/javascript/reference/map#MapOptions)
 * `onReady:Function` - Called when the Google Maps script has initialized `(map) => {}`
 * `onBoundsChange:Function` - Called when the `bounds_changed` event is fired from the map. `(map) => {}`
 * `onCenterChange:Function` - Called when the `change_changed` event is fired from the map. `(map) => {}`
